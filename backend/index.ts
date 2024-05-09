@@ -1,18 +1,32 @@
 import cors from 'cors'
-import * as dotenv from 'dotenv'
+import dotenv from 'dotenv'
 import { Client } from 'pg'
 import express from 'express'
 
-// const dotenv = require('dotenv'),
-//   { Client } = require('pg')
+dotenv.config()
 
-  dotenv.config()
+// const client = new Client({
+//     database: process.env.PGDATABASE,
+//     host: process.env.PGHOST,
+//     password: process.env.PGPASSWORD,
+//     port: process.env.PGPORT,
+//     user: process.env.PGUSER
+//   })
 
 const client = new Client ({
   connectionString: process.env.PGURI
 })
 
-client.connect()
+  client.connect()
+
+// const dotenv = require('dotenv'),
+//   { Client } = require('pg')
+
+
+
+
+
+
 
 const app = express ()
 
@@ -32,15 +46,7 @@ app.listen(3000, () => {
 })
 
 
-  // const client = new Client({
-  //   database: process.env.PGDATABASE,
-  //   host: process.env.PGHOST,
-  //   password: process.env.PGPASSWORD,
-  //   port: process.env.PGPORT,
-  //   user: process.env.PGUSER
-  // })
 
-  // client.connect()
 
 // const { rows } = await client.query('SELECT * FROM cities')
 
