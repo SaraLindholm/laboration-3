@@ -2,6 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import "./component/CounterButton"
+import CounterButton from './component/CounterButton'
 
 function App() {
   const [count, setCount] = useState(1)
@@ -9,6 +11,7 @@ function App() {
   return (
     <>
       <div>
+        <CounterButton value={0} />
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
