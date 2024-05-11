@@ -1,7 +1,8 @@
+/*
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 auto;
   text-align: center;
 }
 
@@ -39,4 +40,19 @@
 
 .read-the-docs {
   color: #888;
+} */
+/* body {
+  background-color: #7dbeb3;
+  opacity: 0.8;
+  background-image: radial-gradient(#ffffff 0.65px, #7dbeb3 0.65px);
+  background-size: 13px 13px;
+} */
+.Navbar-Bootstrap {
+  width: 100vw;
+  position: relative;
+  z-index: 2;
 }
+
+/* .container-fluid {
+  flex-grow: 1;
+} */
