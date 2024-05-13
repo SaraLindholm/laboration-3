@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import './GetClothes.css'
-// import { UseHistory } from 'react-router-dom'
-
-
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+import '../index.css'
+// import { useNavigate} from 'react-router-dom'
 
 function GetClothes () {
+  // const navigate = useNavigate ()
 
-  // let history = useHistory () {
-  //   const ReserveItem = () => {
-  //     history.push ('./view/')
-  //   }
+  function navigateToNewPage () {
+    console.log('Nu ska jag skicka')
+    window.location.href ='./ReserveInfo'
+    console.log('Nu har jag skickats')
+  }
 
-  // }
 
 
 
@@ -33,30 +35,43 @@ function GetClothes () {
     return null
   }
   return (
+    <>
     <div className="TableClothes-Container">
       <h2><center>Alla kläder:</center></h2>
-      <div className="TableClothes-Div">
-      {clothes.map((item) => (
-        <div className="TableClothes-Card" key={item.id}>
-          <h3><p>{item.name}</p></h3>
-          {item.description}
-          <div className="TableImg-Container"><img className="ItemInfo-Img" src={item.image_url} alt='Bild'/></div>
-          <div className="ItemInfo">
-          <div className="ItemInfo-Group">
-            <b>Färg:</b> {item.color}
-            <b>Storlek: </b> {item.size}</div>
-          <div className="ItemInfo-Group">
-            <b>Märke:</b> {item.brand}</div>
-          <div className="ItemInfo-Groudiv">
-            <b>Eventuella skador: </b> {item.condition_comment}</div>
-          </div>
-          {/* <input onClick={test} type="button" value="Reservera vara" /> */}
-          {/* lägg till en push som gör att när sidan trycks ska vi pushas vidare till en sida där användaren får fylla i användarinfo för att reservera. Denna sidan i sin tur blir en ny komponent med tex formulär */}
-        </div>
-      )
-      )}
-      </div>
-    </div>
+    <div className="TableClothes-Div">
+    {clothes.map((item) =>(
+      <div className="TableClothes-Card" key={item.id}>
+    <Card style={{ width: '15rem' }}>
+    <Card.Img variant="top" src={item.image_url} alt="Bild" />
+    <Card.Body>
+      <Card.Title>{item.name}</Card.Title>
+      <Card.Text>
+        {item.description}
+      </Card.Text>
+    </Card.Body>
+    <ListGroup className="list-group-flush">
+      <ListGroup.Item>
+        <b>Storlek: </b> {item.size}
+      </ListGroup.Item>
+      <ListGroup.Item>
+      <b>Färg:</b> {item.color}
+      </ListGroup.Item>
+      <ListGroup.Item>
+        <b>Märke:</b> {item.brand}
+      </ListGroup.Item>
+      <ListGroup.Item>
+        <b>Eventuella skador: </b> {item.condition_comment}
+      </ListGroup.Item>
+    </ListGroup>
+    <Card.Body>
+      <input className="button" onClick={navigateToNewPage} type="button" value="Reservera vara" />
+    </Card.Body>
+  </Card> </div> ))}</div></div>
+
+
+</>
+
+
 
 
   )

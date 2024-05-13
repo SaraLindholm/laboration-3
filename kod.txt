@@ -1,0 +1,75 @@
+import { useState } from 'react';
+
+function MyComponent() {
+  const [showReserveInfo, setShowReserveInfo] = useState(false);
+
+  const handleButtonClick = () => {
+    setShowReserveInfo(true);
+  };
+
+  return (
+    <div>
+      {showReserveInfo ? (
+        <ReserveInfo />
+      ) : (
+        <button onClick={handleButtonClick}>Visa ReserveInfo</button>
+      )}
+    </div>
+  );
+}
+// skulle kunna använda detta för att vida eller inte visa knapp för "slutför beställning"
+
+
+//om jag orkar kan jag testa dessa kort istället.
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+
+function KitchenSinkExample() {
+  return (
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src="{item.image_url}/100px180?text=Bild" />
+      <Card.Body>
+        <Card.Title>{item.name}</Card.Title>
+        <Card.Text>
+          {item.description}
+        </Card.Text>
+      </Card.Body>
+      <ListGroup className="list-group-flush">
+        <ListGroup.Item>
+          <b>Färg:</b> {item.color}
+          <b>Storlek: </b> {item.size}
+        </ListGroup.Item>
+        <ListGroup.Item>
+          <b>Märke:</b> {item.brand}
+        </ListGroup.Item>
+        <ListGroup.Item>
+          <b>Eventuella skador: </b> {item.condition_comment}
+        </ListGroup.Item>
+      </ListGroup>
+      <Card.Body>
+        <input onClick={navigateToNewPage} type="button" value="Reservera vara" />
+      </Card.Body>
+    </Card>
+  );
+}
+
+export default KitchenSinkExample;
+
+ <div className="TableClothes-Container">
+      <h2><center>Alla kläder:</center></h2>
+      <div className="TableClothes-Div">
+      {clothes.map((item) => (
+        <div className="TableClothes-Card" key={item.id}>
+          <h3><p>{item.name}</p></h3>
+          {item.description}
+          <div className="TableImg-Container"><img className="ItemInfo-Img" src={item.image_url} alt='Bild'/></div>
+          <div className="ItemInfo">
+          <div className="ItemInfo-Group">
+            <b>Färg:</b> {item.color}
+            <b>Storlek: </b> {item.size}</div>
+          <div className="ItemInfo-Group">
+            <b>Märke:</b> {item.brand}</div>
+          <div className="ItemInfo-Groudiv">
+            <b>Eventuella skador: </b> {item.condition_comment}</div>
+          </div>
+          <input onClick={navigateToNewPage} type="button" value="Reservera vara" />

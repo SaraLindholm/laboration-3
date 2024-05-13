@@ -15,7 +15,7 @@
 
 .TableClothes-Card {
   /* Stilar för varje aktivitetskort */
-  width: calc(25% - 5px);
+  /* width: calc(25% - 5px); */
   height: auto;
   /* Bredden på varje kort */
   margin: 5px;
@@ -26,6 +26,10 @@
   -moz-box-shadow: 0px 0px 70px 0px #7dbeb3;
   box-shadow: 0px 0px 70px 0px #7dbeb3;
   border-radius: 20px;
+}
+
+.card-img-top {
+  max-height: 250px;
 }
 
 .TableImg-Container {

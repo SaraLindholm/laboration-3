@@ -1,8 +1,12 @@
+import GetClothes from "./component/GetClothes";
+
 function RentClothes(){
 
 
   return (
-  <div>rentClothes</div>
+    <>
+    <GetClothes />
+    </>
   )
 }
 
