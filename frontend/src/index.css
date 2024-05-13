@@ -39,7 +39,7 @@ body {
   font-size: 1.1em;
   font-weight: 500;
   font-family: inherit;
-  /* background-color: #1a1a1a; */
+  background-color: #c8e3de;
   cursor: pointer;
   transition: border-color 0.25s;
 }
