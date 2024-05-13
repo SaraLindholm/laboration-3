@@ -1,4 +1,4 @@
-function rentClothes(){
+function RentClothes(){
 
 
   return (
@@ -6,4 +6,4 @@ function rentClothes(){
   )
 }
 
-export default rentClothes
+export default RentClothes
