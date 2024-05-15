@@ -3,16 +3,18 @@ import './GetClothes.css'
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import '../index.css'
-// import { useNavigate} from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 
 function GetClothes () {
-  // const navigate = useNavigate ()
 
-  function navigateToNewPage () {
-    console.log('Nu ska jag skicka')
-    window.location.href ='./ReserveInfo'
-    console.log('Nu har jag skickats')
-  }
+  const navigate = useNavigate ()
+
+
+  // function navigateToNewPage () {
+  //   console.log('Nu ska jag skicka')
+  //   window.location.href ='./ReserveInfo'
+  //   console.log('Nu har jag skickats')
+  // }
 
 
 
@@ -34,6 +36,11 @@ function GetClothes () {
   if (clothes === null) {
     return null
   }
+
+  const navigateToNewPage = () => {
+    console.log('Navigerar till ny sida vid klick')
+    navigate ('/ReserveInfo') }
+
   return (
     <>
     <div className="TableClothes-Container">
