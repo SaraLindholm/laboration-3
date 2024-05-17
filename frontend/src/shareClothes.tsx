@@ -1,8 +1,10 @@
+import AddItemForm from "./component/AddItemForm"
+
 function shareClothes(){
 
 
   return (
-  <div>shareClothes</div>
+  <AddItemForm />
   )
 }
 

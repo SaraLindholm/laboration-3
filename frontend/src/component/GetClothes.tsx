@@ -46,8 +46,8 @@ function GetClothes () {
     <div className="TableClothes-Container">
       <h2><center>Alla kläder:</center></h2>
     <div className="TableClothes-Div">
-    {clothes.map((item) =>(
-      <div className="TableClothes-Card" key={item.id}>
+    {clothes.map((item, index) =>(
+      <div className="TableClothes-Card" key={index}>
     <Card style={{ width: '15rem' }}>
     <Card.Img variant="top" src={item.image_url} alt="Bild" />
     <Card.Body>
