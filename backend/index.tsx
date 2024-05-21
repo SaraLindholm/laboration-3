@@ -1,8 +1,9 @@
 import cors from 'cors'
 import express from 'express'
+import path from 'path'
 const multer  = require('multer')
 const upload = multer({ dest: 'uploads/' })
-
+// const { body, validationResult } = require('express-validator')
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv'),
   { Client } = require('pg')
@@ -19,11 +20,14 @@ const client = new Client ({
   client.connect()
 
 const app = express ()
+app.use(cors());
+app.use(express.urlencoded({ extended: false }))
+app.use('/uploads', express.static(path.join(path.resolve(), 'uploads')))
 const port = process.env.PORT || 3000
 
-app.use(cors());
+
 app.use(bodyParser.json())
-app.use(express.urlencoded({ extended: false }))
+
 // app.use(express.json());
 
 
@@ -31,7 +35,7 @@ app.use(express.urlencoded({ extended: false }))
 app.get('/', async (_request, response) => {
   console.log('GET-ANROP');
   const { rows } = await client.query('SELECT * FROM clothes ORDER BY RANDOM()')
-//    WHERE name = $1 OR name = $2', ['Snygg bikini', 'Sport-bh'])
+
 
 //skickar de aktuella (dvs alla) raderna som svar
   response.status(200).send(rows);
@@ -41,12 +45,14 @@ app.get('/', async (_request, response) => {
 app.post('/upload', upload.single('image_url'), async (request, response) => {
   console.log(request.file, request.body)
 
-  const { name, description, brand, size, color, condition_comment, category_id, image_url } = request.body;
+  const { name, description, brand, size, color, condition_comment, category_id } = request.body;
 
   try {
     const query = `
       INSERT INTO clothes (name, description, brand, size, color, condition_comment, category_id, image_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
-       const { rows } = await client.query(query, [name, description, brand, size, color, condition_comment, category_id, image_url]);
+       const { rows } = await client.query(query, [name, description, brand, size, color, condition_comment, category_id, request.file !== undefined ?request.file.filename: '']);
+
+
 
       console.log('Lägger till plagg i databasen');
       response.status(201).json(rows)
@@ -57,12 +63,42 @@ app.post('/upload', upload.single('image_url'), async (request, response) => {
   }
 
 })
+//POST-Anrop för att lägga till medlemmar
+app.post('/membership',
+//  [
+//   body('name').notEmpty().withMessage('Namn är obligatoriskt'),
+//   body('email').isEmail().withMessage('Fyll i aktuell email'),
+//   body('password').isLength({min:6}).withMessenge('Lösenord måste bestå av minst 6 tecken')
+// ],
+async (request, response) => {
+  console.log(request.body)
 
-// app.post("/upload", upload.single('image_url'), async (request, response) =>{
-//   console.log(request.file, request.body)
-//   response.send('Plagget är uppladdat')
+  // const errors = validationResult(request)
+  //   if(!errors.isEmpty()) {
+  //     return response.status(400).json({errors: errors.array()})
+  //   }
 
-// })
+const { surname, lastname, email, password } = request.body;
+  if (!surname || !lastname || !email || !password) {
+    return response.status(400).json({ error: 'Alla fält ska fyllas i' });
+  }
+
+  try {
+    const query = `
+      INSERT INTO users(surname, lastname, email, password) VALUES ($1, $2, $3, $4)`;
+       const { rows } = await client.query(query, [surname, lastname, email, password]);
+
+      console.log('Lägger till användare i databasen');
+      response.status(201).json(rows)
+  } catch (error){
+
+    console.error('Error POST', error);
+    response.status(500).json()
+  }
+
+})
+
+
 
 
 app.listen(port, () => {

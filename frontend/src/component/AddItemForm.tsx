@@ -1,11 +1,22 @@
-import '../index.css'; // Din egen CSS-fil
+import '../index.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
+// import {useEffect, useState} from 'react';
 
 function AddItemForm() {
+  // const [image, setImage] = useState (null)
+
+  // useEffect (() =>{
+  //   fetch('http://localhost:3000/')
+  //   .then ((response) => response.json())
+  //   .then ((result) => {
+  //     setImage(result)
+
+  //   })
+  // }, [])
 
   const categories: {category_id: number; name: string; } [] = [
     {category_id: 1, name: 'Tröjor' },

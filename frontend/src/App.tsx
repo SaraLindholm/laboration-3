@@ -12,6 +12,7 @@ import Footer from './component/Footer'
 import RentClothes from './RentClothes'
 import ShareClothes from './ShareClothes'
 import ReserveInfo from './ReserveInfo'
+import BecomeMember from './BecomeMember'
 import Home from './Home'
 
 import {
@@ -49,6 +50,7 @@ function Root () {
               <Dropdown.Item eventKey="T-Shirts">T-Shirts</Dropdown.Item>
               <Dropdown.Item eventKey="Ytterkläder">Ytterkläder</Dropdown.Item>
               </NavDropdown>
+              <Nav.Link href="#/becomeMember">Starta medlemskap</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -70,7 +72,8 @@ function App() {
         { element: <Home />, path: '/' },
         { element: <RentClothes />, path: '/rentClothes'},
         { element: <ShareClothes />, path: '/shareClothes'},
-        { element: <ReserveInfo />, path: '/ReserveInfo'}
+        { element: <ReserveInfo />, path: '/reserveInfo'},
+        { element: <BecomeMember />, path: '/becomeMember'}
       ],
       element: <Root />
     }

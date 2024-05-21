@@ -10,6 +10,9 @@ function GetClothes () {
   const navigate = useNavigate ()
 
   const [clothes, setClothes] = useState<any[]>([]);
+  // const [image, setImage] = useState (null)
+
+
 
   useEffect (() => {
     fetch('http://localhost:3000/')
@@ -39,7 +42,8 @@ function GetClothes () {
     {clothes.map((item, index) =>(
       <div className="TableClothes-Card" key={index}>
     <Card style={{ width: '15rem' }}>
-    <Card.Img variant="top" src={item.image_url} alt="Bild" />
+    <Card.Img variant="top" src={`http://localhost:3000/uploads/${item.image_url ? item.image_url : 'noPhoto.jpg'}`}
+     alt='Ingen bild att visa' />
     <Card.Body>
       <Card.Title>{item.name}</Card.Title>
       <Card.Text>
