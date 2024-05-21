@@ -9,16 +9,6 @@ function GetClothes () {
 
   const navigate = useNavigate ()
 
-
-  // function navigateToNewPage () {
-  //   console.log('Nu ska jag skicka')
-  //   window.location.href ='./ReserveInfo'
-  //   console.log('Nu har jag skickats')
-  // }
-
-
-
-
   const [clothes, setClothes] = useState<any[]>([]);
 
   useEffect (() => {

@@ -1,5 +1,7 @@
 import cors from 'cors'
 import express from 'express'
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv'),
@@ -21,6 +23,7 @@ const port = process.env.PORT || 3000
 
 app.use(cors());
 app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: false }))
 // app.use(express.json());
 
 
@@ -35,11 +38,10 @@ app.get('/', async (_request, response) => {
 })
 
 //POST-Anrop för att lägga till kläder i tabellen Clothes
-app.post('/', async (_request, response) => {
-  console.log('POST-begäran mottagen');
-  console.log('Request body:', _request.body);
-  console.log(_request.body);
-  const { name, description, brand, size, color, condition_comment, category_id, image_url } = _request.body;
+app.post('/upload', upload.single('image_url'), async (request, response) => {
+  console.log(request.file, request.body)
+
+  const { name, description, brand, size, color, condition_comment, category_id, image_url } = request.body;
 
   try {
     const query = `
@@ -55,6 +57,12 @@ app.post('/', async (_request, response) => {
   }
 
 })
+
+// app.post("/upload", upload.single('image_url'), async (request, response) =>{
+//   console.log(request.file, request.body)
+//   response.send('Plagget är uppladdat')
+
+// })
 
 
 app.listen(port, () => {
