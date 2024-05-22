@@ -6,7 +6,7 @@ function BecomeMember(){
 
   return (
     <>
-    <div>Teckna medlemskap</div>
+
     <Membership />
     </>
   )
