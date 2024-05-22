@@ -99,8 +99,6 @@ const { surname, lastname, email, password } = request.body;
 })
 
 
-
-
 app.listen(port, () => {
   console.log('Kontaktar servern på tjusiga http://localhost:3000')
 })
