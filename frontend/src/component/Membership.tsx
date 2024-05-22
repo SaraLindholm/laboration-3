@@ -14,9 +14,7 @@ function Membership() {
     <Container className="p-3">  {/* Container med padding */}
 
       <h1 className="mb-4">Bli medlem och hjälp kläderna cirkulera!</h1>
-      <Form action="http://localhost:3000/membership" method="POST"
-      // encType="multipart/form-data"
-      >
+      <Form action="http://localhost:3000/membership" method="POST">
       <Row className="mb-1">
         <Form.Group as={Col} className="mb-1" controlId='formSurname'>
           <Form.Label column="lg">Förnamn </Form.Label>
