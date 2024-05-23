@@ -30,9 +30,10 @@ function GetClothes () {
     return null
   }
 
-  const navigateToNewPage = () => {
+  const navigateToNewPage = (item: any) => {
     console.log('Navigerar till ny sida vid klick')
-    navigate ('/ReserveInfo') }
+    navigate ('/ReserveInfo', {state: {item}})
+  }
 
   return (
     <>
@@ -65,18 +66,17 @@ function GetClothes () {
       </ListGroup.Item>
     </ListGroup>
     <Card.Body>
-      <input className="button" onClick={navigateToNewPage} type="button" value="Reservera vara" />
+      <input className="button" onClick={() =>navigateToNewPage(item)} type="button" value="Reservera vara" />
     </Card.Body>
   </Card> </div> ))}</div></div>
-
-
 </>
 
 
 
 
   )
-}
+  }
 
 
-  export default GetClothes;
+
+  export default GetClothes

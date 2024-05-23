@@ -1,8 +1,10 @@
+import ReserveInformation from "./component/ReserveInformation";
+
 function Reserve(){
 
 
   return (
-  <div>Reserve </div>
+  <ReserveInformation />
   )
 }
 
