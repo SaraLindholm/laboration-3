@@ -8,6 +8,9 @@ function Home () {
   const navigateToClothes = () => {
     console.log('Navigerar till ny sida vid klick')
     navigate ('/rentClothes') }
+    const navigateToMember = () => {
+      console.log('Navigerar till ny sida vid klick')
+      navigate ('/becomeMember') }
 
 
     return (
@@ -34,6 +37,10 @@ function Home () {
               onClick={navigateToClothes}
               type="button"
               value="Ta mig till kläderna!" />
+                   <input className="button"
+              onClick={navigateToMember}
+              type="button"
+              value="Låt mig bli medlem!" />
             </div>
       </div>
       </>

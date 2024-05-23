@@ -65,11 +65,7 @@ app.post('/upload', upload.single('image_url'), async (request, response) => {
 })
 //POST-Anrop för att lägga till medlemmar
 app.post('/membership',
-//  [
-//   body('name').notEmpty().withMessage('Namn är obligatoriskt'),
-//   body('email').isEmail().withMessage('Fyll i aktuell email'),
-//   body('password').isLength({min:6}).withMessenge('Lösenord måste bestå av minst 6 tecken')
-// ],
+
 async (request, response) => {
   console.log(request.body)
 

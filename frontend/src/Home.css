@@ -1,4 +1,7 @@
 .HomeContainer {
-  margin-left: 100px;
-  margin-right: 100px;
+  display: flex;
+  justify-content: center; /* Centrerar innehållet horisontellt */
+  align-items: center; /* Centrerar innehållet vertikalt */
+  flex-direction: column; /* Ställer in flexriktningen till kolumn */
+  padding: 0 20px; /* Lägg till sidomarginer för att undvika att texten hamnar för nära kanten */
 }
