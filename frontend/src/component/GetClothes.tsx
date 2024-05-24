@@ -10,9 +10,6 @@ function GetClothes () {
   const navigate = useNavigate ()
 
   const [clothes, setClothes] = useState<any[]>([]);
-  // const [image, setImage] = useState (null)
-
-
 
   useEffect (() => {
     fetch('http://localhost:3000/')

@@ -10,18 +10,13 @@ interface ClothingItem {
   condition_comment: string;
   category_id: string;
   image_url: string;
-
 }
 
 function ReserveInformation(){
   const location = useLocation()
   const item = (location.state as {item: ClothingItem})?.item
-
-
   return (
   <>
-
-
     <div className="flexContainer">
       <h3>Tack för att du väljer att använda dig utav Klädbiblioteket!</h3>
       {/* <p>Här finner du information om den artikel du har valt att reservera. För att slutföra din bokning, klicka på knappen "Bekräfta bokning" nedan.</p> */}
@@ -49,9 +44,6 @@ function ReserveInformation(){
           <p><strong>Eventuella skador:</strong></p>
         </div>
       </div></div>
-
-
-
   </>
   )
 }

@@ -1,5 +1,5 @@
 import cors from 'cors'
-import express from 'express'
+import express, { query } from 'express'
 import path from 'path'
 const multer  = require('multer')
 const upload = multer({ dest: 'uploads/' })
@@ -28,17 +28,37 @@ const port = process.env.PORT || 3000
 
 app.use(bodyParser.json())
 
-// app.use(express.json());
 
-
-  //GET-anrop för att hämta alla rader från tabellen clothes till Rot
+  //GET-anrop för att hämta alla Items från tabellen Clothes
 app.get('/', async (_request, response) => {
   console.log('GET-ANROP');
   const { rows } = await client.query('SELECT * FROM clothes ORDER BY RANDOM()')
 
-
 //skickar de aktuella (dvs alla) raderna som svar
   response.status(200).send(rows);
+})
+
+//POST för att kontrollera om användaren är registrerad
+// const { query: pgquery } = require('pg');
+
+app.post('/verify', async (request, response) => {
+  console.log (request.body)
+
+  const { surname, email, password } = request.body
+   try {
+    const member = await client.query('SELECT * FROM users WHERE surname = $1 AND email = $2 AND password = $3', [surname, email, password]);
+
+    if (member.rows.length > 0) {
+      response.json({success: true})
+      console.log('Användaren finns!')
+    } else {
+      response.json({success: false})
+      console.log('Användaren finns inte, alternativt är inloggningsuppgifterna felaktiga')
+    }
+   } catch (error) {
+    console.error('Ett fel har uppstått:', error)
+    response.status(500).json({success: false, error: 'Serverfel'})
+   }
 })
 
 //POST-Anrop för att lägga till kläder i tabellen Clothes
@@ -69,10 +89,6 @@ app.post('/membership',
 async (request, response) => {
   console.log(request.body)
 
-  // const errors = validationResult(request)
-  //   if(!errors.isEmpty()) {
-  //     return response.status(400).json({errors: errors.array()})
-  //   }
 
 const { surname, lastname, email, password } = request.body;
   if (!surname || !lastname || !email || !password) {
