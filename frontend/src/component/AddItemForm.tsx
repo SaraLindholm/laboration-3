@@ -90,44 +90,76 @@ function AddItemForm() {
   };
   return (
   <>
-    <Container className="p-3">  {/* Container med padding */}
+    <Container className="p-3">
 
-      <h1 className="mb-4">Ladda upp kläder till vårt gemensamma bibliotek</h1>
+      <h3 className="mb-4">Ladda upp kläder till vårt gemensamma bibliotek</h3>
       <Form onSubmit={handleSubmit}
             encType="multipart/form-data">
       <Row className="mb-3">
         <Form.Group as={Col} className="mb-3" controlId='formName'>
-          <Form.Label column="lg">Titel: </Form.Label>
-          <Form.Control type="text" name="name" placeholder="T.ex 'Snygg vårblus'" value={formData.name} onChange={handleChange}/>
+          <Form.Label column="lg">Sätt titel på plagget: </Form.Label>
+          <Form.Control
+            type="text"
+            name="name"
+            placeholder="T.ex 'Snygg vårblus'"
+            value={formData.name}
+            onChange={handleChange}
+            required/>
         </Form.Group>
-
 
         <Form.Group  as={Col} className="mb-3" controlId="formDescription">
           <Form.Label column="lg">Bekriv din vara: </Form.Label>
-          <Form.Control type="text" name="description" placeholder="T.ex 'Bara använd ett par gånger, smickarande passform'" value={formData.description} onChange={handleChange}/>
+          <Form.Control
+            type="text"
+            name="description"
+            placeholder="T.ex 'Bara använd ett par gånger, smickarande passform'"
+            value={formData.description}
+            onChange={handleChange}
+            required/>
         </Form.Group>
         </Row>
 
         <Row className="mb-3">
           <Form.Group as={Col} className="mb-3" controlId="formBrand">
             <Form.Label column="lg">Märke: </Form.Label>
-            <Form.Control type="text" name="brand" placeholder="Märke" value={formData.brand} onChange={handleChange} />
+            <Form.Control
+              type="text"
+              name="brand"
+              placeholder="Märke"
+              value={formData.brand}
+              onChange={handleChange} />
           </Form.Group>
 
           <Form.Group as={Col} className="mb-3" controlId="formSize">
             <Form.Label column="lg">Storlek: </Form.Label>
-            <Form.Control type="text" name="size" placeholder="Storlek" value={formData.size} onChange={handleChange}/>
+            <Form.Control
+              type="text"
+              name="size"
+              placeholder="Storlek"
+              value={formData.size}
+              onChange={handleChange}
+              required/>
           </Form.Group>
 
           <Form.Group as={Col} className="mb-3" controlId="formColor">
             <Form.Label column="lg">Färg: </Form.Label>
-            <Form.Control type="text" name="color" placeholder="Färg" value={formData.color} onChange={handleChange}/>
+            <Form.Control
+              type="text"
+              name="color"
+              placeholder="Färg"
+              value={formData.color}
+              onChange={handleChange}/>
           </Form.Group>
         </Row>
 
         <Form.Group className="mb-3" controlId="formConditionComment">
           <Form.Label column="lg">Skick: </Form.Label>
-          <Form.Control type="text" name="condition_comment" placeholder="Skick" value={formData.condition_comment} onChange={handleChange}/>
+          <Form.Control
+            type="text"
+            name="condition_comment"
+            placeholder="Skick"
+            value={formData.condition_comment}
+            onChange={handleChange}/>
           <Form.Text className="text-muted">Ange om plagget har eventuella skador/slitage:</Form.Text>
         </Form.Group>
 
@@ -141,15 +173,18 @@ function AddItemForm() {
               id={`category-${category.category_id}`}
               value={category.category_id}
               label={category.name} onChange={handleChange}
+              required
             />
         </div>
           ))}
-
         </Form.Group>
 
          <Form.Group className="mb-3" controlId="formImageUrl">
           <Form.Label column="lg">Ladda upp en bild: </Form.Label>
-          <Form.Control type="file" name="image_url" placeholder="Bild URL" />
+          <Form.Control
+            type="file"
+            name="image_url"
+            placeholder="Bild URL" />
         </Form.Group>
 
         <Button className="button" type="submit">Ladda upp ditt plagg</Button>
@@ -165,7 +200,6 @@ function AddItemForm() {
         <Toast.Body>Ditt plagg är nu tillagt i biblioteket.</Toast.Body>
       </Toast>
       </ToastContainer>
-
     </Container>
     </>
   );

@@ -1,4 +1,4 @@
-import { Container, Row, Col, Accordion, Card, Button } from 'react-bootstrap';
+import { Container, Accordion} from 'react-bootstrap';
 
 function Faq (){
 

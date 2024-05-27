@@ -21,12 +21,10 @@ function ReserveInformation(){
     <div className="flexContainer">
       <h3>Tack för att du väljer att använda dig utav Klädbiblioteket!</h3>
       <p> Vi hoppas att du kommer att njuta av din reserverade vara och ser fram emot att ge dig en fantastisk upplevelse med vårt klädbibliotek!</p>
-
-      {/* <p>För att genomföra en bokning ber vi dig fylla i informationen här nedan. Om du inte har ett aktivt medlemskap ber vi dig först klicka dig vidare till <Link to="/becomeMember">starta medlemsskap </Link> innan du kan återgå till din bokning.</p> */}
     <div className="flexRow">
     <div className="itemContainer">
     <div>
-      <img style={{maxHeight:'150px'}}src={`http://localhost:3000/uploads/${item.image_url}`} alt={item.name} />
+      <img style={{maxHeight:'300px'}}src={`http://localhost:3000/uploads/${item.image_url}`} alt={item.name} />
       </div>
       <p><strong>Namn:</strong> {item.name}</p>
       <p><strong>Beskrivning:</strong> {item.description}</p>

@@ -16,6 +16,7 @@ function Home () {
     return (
       <>
       <div className="HomeContainer">
+        <div className="HomeTextBox">
         <h3>Välkommen till Kläd-Biblioteket!</h3>
           <p>
             Välkommen till Kläd-Biblioteket, din plats för att låna kläder på ett hållbart och ekonomiskt sätt. Vi tror på att dela och återanvända kläder för att främja en cirkulär ekonomi.
@@ -34,14 +35,15 @@ function Home () {
           </p>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <input className="button"
-              onClick={navigateToClothes}
-              type="button"
-              value="Ta mig till kläderna!" />
-                   <input className="button"
-              onClick={navigateToMember}
-              type="button"
-              value="Låt mig bli medlem!" />
+                onClick={navigateToClothes}
+                type="button"
+                value="Ta mig till kläderna!" />
+              <input className="button"
+                onClick={navigateToMember}
+                type="button"
+                value="Låt mig bli medlem!" />
             </div>
+        </div>
       </div>
       </>
     );

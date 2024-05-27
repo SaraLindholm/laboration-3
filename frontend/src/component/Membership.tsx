@@ -77,7 +77,7 @@ function Membership() {
   return (
     <>
     <Container className="p-3">
-      <h1 className="mb-3">Bli medlem och hjälp kläderna cirkulera!</h1>
+      <h3 className="mb-3">Bli medlem och hjälp kläderna cirkulera!</h3>
       <Form onSubmit={handleSubmit}>
         <Row className="mb-1">
           <Form.Group as={Col} className="mb-1" controlId='formSurname'>

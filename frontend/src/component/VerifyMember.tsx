@@ -23,7 +23,7 @@ const [formData, setFormData] = useState({
 
   const navigate = useNavigate ()
   const navigateToNewPage = () => {
-    navigate ('/becomeMember')
+    navigate ('/completeOrder')
   }
 
   const handleSubmit = async (event: FormEvent) =>{
@@ -54,7 +54,6 @@ const [formData, setFormData] = useState({
         console.error('Något gick fel vid skickning av formuläret.');
         console.log('Resonse data:', responseData)
         setServerResponse(responseData.success)
-
       }
     } catch (error) {
       console.error('Ett fel uppstod:', error);
@@ -72,7 +71,6 @@ const [formData, setFormData] = useState({
 
   return (
     <>
-
     <Container className="p-3">
       <h4 className="mb-2">Verifera dig som medlem:</h4>
       {!serverResponse && <p className="text-danger">Användaren finns inte, alternativt är inloggningsuppgifterna felaktiga</p>}

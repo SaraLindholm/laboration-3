@@ -1,7 +1,7 @@
 import cors from 'cors'
 import express, { query } from 'express'
 import path from 'path'
-const multer  = require('multer')
+import multer from 'multer'
 const upload = multer({ dest: 'uploads/' })
 // const { body, validationResult } = require('express-validator')
 const bodyParser = require('body-parser');
@@ -70,7 +70,9 @@ app.post('/upload', upload.single('image_url'), async (request, response) => {
   try {
     const query = `
       INSERT INTO clothes (name, description, brand, size, color, condition_comment, category_id, image_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
-       const { rows } = await client.query(query, [name, description, brand, size, color, condition_comment, category_id, request.file !== undefined ?request.file.filename: '']);
+       const { rows } = await client.query(query, [name, description, brand, size, color, condition_comment, category_id, request.file ?request.file.filename: '']);
+
+
 
 
 
