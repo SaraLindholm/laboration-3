@@ -25,7 +25,6 @@ function Membership() {
 
   const navigate = useNavigate ()
 
-
   const navigateToNewPage = () => {
     console.log('Navigerar till ny sida vid klick')
     navigate ('/rentClothes') }
@@ -104,7 +103,7 @@ function Membership() {
           </Form.Group>
         </Row>
 
-        <Button variant="primary" type="submit">Bli medlem idag</Button>
+        <Button className="button" type="submit">Bli medlem idag</Button>
       </Form>
       <ToastContainer position="middle-center"  className="p-3" style={{ zIndex: 1 }}>
       <Toast show={showA} onClose={toggleShowA}>

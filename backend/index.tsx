@@ -44,9 +44,9 @@ app.get('/', async (_request, response) => {
 app.post('/verify', async (request, response) => {
   console.log (request.body)
 
-  const { surname, email, password } = request.body
+  const { surname, lastname, email, password } = request.body
    try {
-    const member = await client.query('SELECT * FROM users WHERE surname = $1 AND email = $2 AND password = $3', [surname, email, password]);
+    const member = await client.query('SELECT * FROM users WHERE surname ILIKE $1 AND lastname ILIKE $2 AND email = $3 AND password = $4', [surname, lastname, email, password]);
 
     if (member.rows.length > 0) {
       response.json({success: true})

@@ -141,8 +141,6 @@ function AddItemForm() {
               id={`category-${category.category_id}`}
               value={category.category_id}
               label={category.name} onChange={handleChange}
-              // value={formData.category_id}
-              //jag vet inte hur jag ska använda mig av formData här? Jag har ju angivet value för respektive kategori här?
             />
         </div>
           ))}
@@ -154,7 +152,7 @@ function AddItemForm() {
           <Form.Control type="file" name="image_url" placeholder="Bild URL" />
         </Form.Group>
 
-        <Button variant="primary" type="submit">Ladda upp ditt plagg</Button>
+        <Button className="button" type="submit">Ladda upp ditt plagg</Button>
       </Form>
 
       <ToastContainer position="middle-center"  className="p-3" style={{ zIndex: 1 }}>

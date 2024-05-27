@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import './ReserveInformation.css'
+import VerifyMember from './VerifyMember';
 
 interface ClothingItem {
   name: string;
@@ -23,25 +24,21 @@ function ReserveInformation(){
 
       <p>Om du har några frågor eller behöver ytterligare information, tveka inte att kontakta oss på info@kladbiblioteket.se eller ring oss på 0722-538812.</p><p> Vi hoppas att du kommer att njuta av din reserverade vara och ser fram emot att ge dig en fantastisk upplevelse med vårt klädbibliotek!</p>
 
-      <p>För att genomföra en bokning ber vi dig fylla i informationen här nedan. Om du inte har ett aktivt medlemskap ber vi dig först klicka dig vidare till <Link to="/becomeMember">starta medlemsskap </Link> innan du kan återgå till din bokning.</p>
+      {/* <p>För att genomföra en bokning ber vi dig fylla i informationen här nedan. Om du inte har ett aktivt medlemskap ber vi dig först klicka dig vidare till <Link to="/becomeMember">starta medlemsskap </Link> innan du kan återgå till din bokning.</p> */}
     <div className="flexRow">
-        <div className="itemContainer">
-        <div>
-          <img style={{maxHeight:'150px'}}src={`http://localhost:3000/uploads/${item.image_url}`} alt={item.name} />
-          </div>
-          <p><strong>Namn:</strong> {item.name}</p>
-          <p><strong>Beskrivning:</strong> {item.description}</p>
-          <p><strong>Storlek:</strong> {item.size}</p>
-          <p><strong>Färg:</strong> {item.color}</p>
-          <p><strong>Märke:</strong> {item.brand}</p>
-          <p><strong>Eventuella skador:</strong> {item.condition_comment}</p>
-        </div>
+    <div className="itemContainer">
+    <div>
+      <img style={{maxHeight:'150px'}}src={`http://localhost:3000/uploads/${item.image_url}`} alt={item.name} />
+      </div>
+      <p><strong>Namn:</strong> {item.name}</p>
+      <p><strong>Beskrivning:</strong> {item.description}</p>
+      <p><strong>Storlek:</strong> {item.size}</p>
+      <p><strong>Färg:</strong> {item.color}</p>
+      <p><strong>Märke:</strong> {item.brand}</p>
+      <p><strong>Eventuella skador:</strong> {item.condition_comment}</p>
+    </div>
         <div className="textContainer">
-          <p><strong>Beskrivning:</strong></p>
-          <p><strong>Storlek:</strong> </p>
-          <p><strong>Färg:</strong> </p>
-          <p><strong>Märke:</strong> </p>
-          <p><strong>Eventuella skador:</strong></p>
+          <VerifyMember />
         </div>
       </div></div>
   </>
