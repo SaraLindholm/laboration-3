@@ -23,7 +23,8 @@ const [formData, setFormData] = useState({
 
   const navigate = useNavigate ()
   const navigateToNewPage = () => {
-    navigate ('/completeOrder')
+    // navigate ('/becomeMember')
+    navigate ('/completedOrder')
   }
 
   const handleSubmit = async (event: FormEvent) =>{

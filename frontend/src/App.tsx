@@ -13,6 +13,7 @@ import RentClothes from './RentClothes'
 import ShareClothes from './ShareClothes'
 import ReserveInfo from './ReserveInfo'
 import BecomeMember from './BecomeMember'
+import CompletedOrder from './CompletedOrder'
 import Home from './Home'
 import Faq from './Faq'
 
@@ -76,7 +77,8 @@ function App() {
         { element: <ShareClothes />, path: '/shareClothes'},
         { element: <ReserveInfo />, path: '/reserveInfo'},
         { element: <Faq />, path: '/faq'},
-        { element: <BecomeMember />, path: '/becomeMember'}
+        { element: <BecomeMember />, path: '/becomeMember'},
+        { element: <CompletedOrder />, path: '/completedOrder'}
       ],
       element: <Root />
     }
