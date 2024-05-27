@@ -82,7 +82,12 @@ function Membership() {
         <Row className="mb-1">
           <Form.Group as={Col} className="mb-1" controlId='formSurname'>
             <Form.Label column="lg">Förnamn</Form.Label>
-            <Form.Control type="text" name="surname" placeholder="" value={formData.surname} onChange={handleChange} />
+            <Form.Control
+            type="text"
+            name="surname"
+            placeholder=""
+            value={formData.surname}
+            onChange={handleChange} />
           </Form.Group>
 
           <Form.Group as={Col} className="mb-1" controlId="formLastname">

@@ -14,6 +14,7 @@ import ShareClothes from './ShareClothes'
 import ReserveInfo from './ReserveInfo'
 import BecomeMember from './BecomeMember'
 import Home from './Home'
+import Faq from './Faq'
 
 import {
   createHashRouter,
@@ -37,7 +38,8 @@ function Root () {
             <Nav className="me-auto">
               <Nav.Link href="#/rentClothes">Låna kläder</Nav.Link>
               <Nav.Link href="#/shareClothes">Lägg till dina plagg</Nav.Link>
-              <NavDropdown
+              <Nav.Link href="#/faq">Vanliga frågor</Nav.Link>
+              {/* <NavDropdown
               // onSelect={clothesCategories}
               title="Kategorier" id="basic-nav-dropdown" >
               <Dropdown.Item eventKey="Badkläder">Badkläder</Dropdown.Item>
@@ -49,7 +51,7 @@ function Root () {
               <Dropdown.Item eventKey="Tröjor">Tröjor</Dropdown.Item>
               <Dropdown.Item eventKey="T-Shirts">T-Shirts</Dropdown.Item>
               <Dropdown.Item eventKey="Ytterkläder">Ytterkläder</Dropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
               <Nav.Link href="#/becomeMember">Starta medlemskap</Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -73,6 +75,7 @@ function App() {
         { element: <RentClothes />, path: '/rentClothes'},
         { element: <ShareClothes />, path: '/shareClothes'},
         { element: <ReserveInfo />, path: '/reserveInfo'},
+        { element: <Faq />, path: '/faq'},
         { element: <BecomeMember />, path: '/becomeMember'}
       ],
       element: <Root />

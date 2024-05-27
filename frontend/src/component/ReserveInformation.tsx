@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import './ReserveInformation.css'
 import VerifyMember from './VerifyMember';
 
@@ -20,9 +20,7 @@ function ReserveInformation(){
   <>
     <div className="flexContainer">
       <h3>Tack för att du väljer att använda dig utav Klädbiblioteket!</h3>
-      {/* <p>Här finner du information om den artikel du har valt att reservera. För att slutföra din bokning, klicka på knappen "Bekräfta bokning" nedan.</p> */}
-
-      <p>Om du har några frågor eller behöver ytterligare information, tveka inte att kontakta oss på info@kladbiblioteket.se eller ring oss på 0722-538812.</p><p> Vi hoppas att du kommer att njuta av din reserverade vara och ser fram emot att ge dig en fantastisk upplevelse med vårt klädbibliotek!</p>
+      <p> Vi hoppas att du kommer att njuta av din reserverade vara och ser fram emot att ge dig en fantastisk upplevelse med vårt klädbibliotek!</p>
 
       {/* <p>För att genomföra en bokning ber vi dig fylla i informationen här nedan. Om du inte har ett aktivt medlemskap ber vi dig först klicka dig vidare till <Link to="/becomeMember">starta medlemsskap </Link> innan du kan återgå till din bokning.</p> */}
     <div className="flexRow">

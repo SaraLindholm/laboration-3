@@ -7,12 +7,12 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import { FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-// import { Formik, ErrorMessage } from 'formik';
-// import { object, string, number, date, InferType } from 'yup';
+
 
 
 function VerifyMember () {
 
+const [serverResponse, setServerResponse] = useState(true)
 const [validated, setValidated] = useState(false)
 const [formData, setFormData] = useState({
     surname: '',
@@ -32,8 +32,8 @@ const [formData, setFormData] = useState({
     if (form.checkValidity() === false) {
       // event.preventDefault();
       event.stopPropagation();
-    } setValidated(true)
-    console.log('Data som skickas', formData)
+      setValidated(true)
+    }
 
     try {
       const response = await fetch ('http://localhost:3000/verify', {
@@ -43,10 +43,9 @@ const [formData, setFormData] = useState({
         },
         body: JSON.stringify(formData)
       })
-      console.log('Response status:',  response.status)
+      console.log('Response status:', response.status)
 
       const responseData = await response.json()
-
       if (response.ok && responseData.success) {
         console.log('Formuläret skickades framgångsrikt!');
           navigateToNewPage ()
@@ -54,10 +53,13 @@ const [formData, setFormData] = useState({
       } else {
         console.error('Något gick fel vid skickning av formuläret.');
         console.log('Resonse data:', responseData)
+        setServerResponse(responseData.success)
+
       }
     } catch (error) {
       console.error('Ett fel uppstod:', error);
     }
+    setValidated(true)
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,25 +72,11 @@ const [formData, setFormData] = useState({
 
   return (
     <>
-    {/* <Formik
-      validate = {(values) => {
-      const errors = {}
-        if (values.surname.trim() === '') {
-          errors.surname = 'Namn kan inte lämnas tomt'
-        }
-        if (values.lastname.trim() === '') {
-          errors.lastname = 'Efternamn kan inte lämnas tomt'
-        }if (values.email.trim() === '') {
-          errors.email = 'Email kan inte lämnas tomt'
-        }if (values.lastname.trim() === '') {
-          errors.password = 'Lösenord kan inte lämnas tomt'
-        }
-        return errors
-      }}
-    > */}
+
     <Container className="p-3">
       <h4 className="mb-2">Verifera dig som medlem:</h4>
-      <Form onSubmit={handleSubmit}>
+      {!serverResponse && <p className="text-danger">Användaren finns inte, alternativt är inloggningsuppgifterna felaktiga</p>}
+      <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Row className="mb-1">
           <Form.Group as={Col} className="mb-1" controlId='formSurname'>
             <Form.Label column="sm">Förnamn</Form.Label>
@@ -98,10 +86,10 @@ const [formData, setFormData] = useState({
               placeholder=""
               value={formData.surname}
               onChange={handleChange}
+              required
               isInvalid={
-                validated && formData.surname.length <1
+                true && validated && formData.surname.length <1
               }
-
             />
             <Form.Control.Feedback type="invalid">
               Vänligen fyll i ditt namn
@@ -116,6 +104,7 @@ const [formData, setFormData] = useState({
             placeholder=""
             value={formData.lastname}
             onChange={handleChange}
+            required
             isInvalid={
               validated && formData.lastname.length <1
             }
@@ -135,10 +124,10 @@ const [formData, setFormData] = useState({
             placeholder=""
             value={formData.email}
             onChange={handleChange}
+            required
             isInvalid={
               validated && formData.email.length <1
             }
-
 
           />
           <Form.Control.Feedback type="invalid">
@@ -155,6 +144,7 @@ const [formData, setFormData] = useState({
             value={formData.password}
             minLength={6}
             onChange={handleChange}
+            required
             isInvalid={
               validated && formData.password.length <6
             }/>
@@ -165,15 +155,11 @@ const [formData, setFormData] = useState({
         </Row>
         <Button className="button" type="submit">Verfiera dig som medlem</Button>
       </Form>
-      <p>För att genomföra en bokning ber vi dig fylla i dina medlemsuppgifter. Hit Här kan du <Link to="/becomeMember">starta medlemsskap </Link> </p>
+      <p>För att genomföra en bokning ber vi dig fylla i dina medlemsuppgifter. Hit Här kan du <Link to="/becomeMember">starta medlemsskap</Link> och om du har fortsatt problem kan du kontakta oss på info@kladbiblioteket.se</p>
     </Container>
 
     </>
   )
 
       }
-
-
-
-
 export default VerifyMember

@@ -59,7 +59,7 @@ function GetClothes () {
         <b>Märke:</b> {item.brand}
       </ListGroup.Item>
       <ListGroup.Item>
-        <b>Eventuella skador: </b> {item.condition_comment}
+        <b> Eventuella skador: </b> {item.condition_comment}
       </ListGroup.Item>
     </ListGroup>
     <Card.Body>
