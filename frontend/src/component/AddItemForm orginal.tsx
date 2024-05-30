@@ -6,8 +6,8 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import Toast from 'react-bootstrap/Toast';
-import ToastContainer from 'react-bootstrap/ToastContainer';
+// import Toast from 'react-bootstrap/Toast';
+// import ToastContainer from 'react-bootstrap/ToastContainer';
 
 function AddItemForm() {
 
@@ -37,8 +37,8 @@ function AddItemForm() {
   })
 
       // //ett försök till en Toast som informerar om medlemskap
-      const [showA, setShowA] = useState(false);
-      const toggleShowA = () => setShowA(!showA);
+      // const [showA, setShowA] = useState(false);
+      // const toggleShowA = () => setShowA(!showA);
 
   const navigate = useNavigate ()
 
@@ -50,14 +50,15 @@ function AddItemForm() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     console.log('Form data being sent:', formData);
 
     try {
+      console.log(formData)
       // Skicka formulärdata till servern
       const response = await fetch('http://localhost:3000/upload', {
         method: 'POST',
         headers: {
+          // 'Content-Type': 'multipart/form-data'
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData)
@@ -67,11 +68,11 @@ function AddItemForm() {
 
       if (response.ok) {
         // Toast
-        setShowA(true)
+        // setShowA(true)
         console.log('Formuläret skickades framgångsrikt!');
         setTimeout(() => {
           navigateToNewPage ()
-        }, 5000)
+        }, 4000)
 
       } else {
         console.error('Något gick fel vid skickning av formuläret.');
@@ -82,52 +83,95 @@ function AddItemForm() {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    const { name, value, files } = event.target;
+    console.log(name + ": " + value)
+    if (files) {
+      console.log(files[0])
+
+      setFormData({
+        ...formData,
+        [name]: files[0]
+      })
+    }
+    else {
+      setFormData({
+        ...formData,
+        [name]: value
+      });
+    }
   };
   return (
   <>
-    <Container className="p-3">  {/* Container med padding */}
+    <Container className="p-3">
 
-      <h1 className="mb-4">Ladda upp kläder till vårt gemensamma bibliotek</h1>
+      <h3 className="mb-4">Ladda upp kläder till vårt gemensamma bibliotek</h3>
       <Form onSubmit={handleSubmit}
             encType="multipart/form-data">
       <Row className="mb-3">
         <Form.Group as={Col} className="mb-3" controlId='formName'>
-          <Form.Label column="lg">Titel: </Form.Label>
-          <Form.Control type="text" name="name" placeholder="T.ex 'Snygg vårblus'" value={formData.name} onChange={handleChange}/>
+          <Form.Label column="lg">Sätt titel på plagget: </Form.Label>
+          <Form.Control
+            type="text"
+            name="name"
+            placeholder="T.ex 'Snygg vårblus'"
+            value={formData.name}
+            onChange={handleChange}
+            required/>
         </Form.Group>
-
 
         <Form.Group  as={Col} className="mb-3" controlId="formDescription">
           <Form.Label column="lg">Bekriv din vara: </Form.Label>
-          <Form.Control type="text" name="description" placeholder="T.ex 'Bara använd ett par gånger, smickarande passform'" value={formData.description} onChange={handleChange}/>
+          <Form.Control
+            type="text"
+            name="description"
+            placeholder="T.ex 'Bara använd ett par gånger, smickarande passform'"
+            value={formData.description}
+            onChange={handleChange}
+            required/>
         </Form.Group>
         </Row>
 
         <Row className="mb-3">
           <Form.Group as={Col} className="mb-3" controlId="formBrand">
             <Form.Label column="lg">Märke: </Form.Label>
-            <Form.Control type="text" name="brand" placeholder="Märke" value={formData.brand} onChange={handleChange} />
+            <Form.Control
+              type="text"
+              name="brand"
+              placeholder="Märke"
+              value={formData.brand}
+              onChange={handleChange} />
           </Form.Group>
 
           <Form.Group as={Col} className="mb-3" controlId="formSize">
             <Form.Label column="lg">Storlek: </Form.Label>
-            <Form.Control type="text" name="size" placeholder="Storlek" value={formData.size} onChange={handleChange}/>
+            <Form.Control
+              type="text"
+              name="size"
+              placeholder="Storlek"
+              value={formData.size}
+              onChange={handleChange}
+              required/>
           </Form.Group>
 
           <Form.Group as={Col} className="mb-3" controlId="formColor">
             <Form.Label column="lg">Färg: </Form.Label>
-            <Form.Control type="text" name="color" placeholder="Färg" value={formData.color} onChange={handleChange}/>
+            <Form.Control
+              type="text"
+              name="color"
+              placeholder="Färg"
+              value={formData.color}
+              onChange={handleChange}/>
           </Form.Group>
         </Row>
 
         <Form.Group className="mb-3" controlId="formConditionComment">
           <Form.Label column="lg">Skick: </Form.Label>
-          <Form.Control type="text" name="condition_comment" placeholder="Skick" value={formData.condition_comment} onChange={handleChange}/>
+          <Form.Control
+            type="text"
+            name="condition_comment"
+            placeholder="Skick"
+            value={formData.condition_comment}
+            onChange={handleChange}/>
           <Form.Text className="text-muted">Ange om plagget har eventuella skador/slitage:</Form.Text>
         </Form.Group>
 
@@ -140,24 +184,29 @@ function AddItemForm() {
               name="category_id"
               id={`category-${category.category_id}`}
               value={category.category_id}
-              label={category.name} onChange={handleChange}
-              // value={formData.category_id}
-              //jag vet inte hur jag ska använda mig av formData här? Jag har ju angivet value för respektive kategori här?
+              label={category.name}
+              onChange={handleChange}
+              required
             />
         </div>
           ))}
-
         </Form.Group>
 
          <Form.Group className="mb-3" controlId="formImageUrl">
           <Form.Label column="lg">Ladda upp en bild: </Form.Label>
-          <Form.Control type="file" name="image_url" placeholder="Bild URL" />
+          <Form.Control
+            type="file"
+            accept='image/*'
+            name="image_url"
+            placeholder="Bild URL"
+            // value={formData.image_url}
+            onChange={handleChange}
+            />
         </Form.Group>
-
-        <Button variant="primary" type="submit">Ladda upp ditt plagg</Button>
+        <Button className="button" type="submit">Ladda upp ditt plagg</Button>
       </Form>
 
-      <ToastContainer position="middle-center"  className="p-3" style={{ zIndex: 1 }}>
+      {/* <ToastContainer position="bottom-center"  className="p-3" style={{ zIndex: 1 }}>
       <Toast show={showA} onClose={toggleShowA}>
         <Toast.Header>
           <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
@@ -166,13 +215,9 @@ function AddItemForm() {
         </Toast.Header>
         <Toast.Body>Ditt plagg är nu tillagt i biblioteket.</Toast.Body>
       </Toast>
-      </ToastContainer>
-
+      </ToastContainer> */}
     </Container>
     </>
   );
 }
-
-
-
 export default AddItemForm;

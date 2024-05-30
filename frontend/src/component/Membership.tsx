@@ -7,8 +7,9 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom'
-import Toast from 'react-bootstrap/Toast';
-import ToastContainer from 'react-bootstrap/ToastContainer';
+// import Toast from 'react-bootstrap/Toast';
+// import ToastContainer from 'react-bootstrap/ToastContainer';
+// import Modal from 'react-bootstrap/Modal';
 
 function Membership() {
   const [formData, setFormData] = useState({
@@ -18,9 +19,15 @@ function Membership() {
     password: ''
   });
 
+
+    //Modal
+    // const [show, setShow] = useState (false)
+
+    // const handleClose = () => setShow(false)
+    // const handleShow = () => setShow(true)
     // //ett försök till en Toast som informerar om medlemskap
-  const [showA, setShowA] = useState(false);
-  const toggleShowA = () => setShowA(!showA);
+  // const [showA, setShowA] = useState(false);
+  // const toggleShowA = () => setShowA(!showA);
   // const [position, setPosition] = useState('middle-center');
 
   const navigate = useNavigate ()
@@ -51,7 +58,7 @@ function Membership() {
       if (response.ok) {
         // Visa ett meddelande eller utför andra åtgärder för en lyckad skickning
 
-        setShowA(true)
+        // setShowA(true)
         console.log('Formuläret skickades framgångsrikt!');
         setTimeout(() => {
           navigateToNewPage ()
@@ -110,7 +117,7 @@ function Membership() {
 
         <Button className="button" type="submit">Bli medlem idag</Button>
       </Form>
-      <ToastContainer position="middle-center"  className="p-3" style={{ zIndex: 1 }}>
+      {/* <ToastContainer position="middle-center"  className="p-3" style={{ zIndex: 1 }}>
       <Toast show={showA} onClose={toggleShowA}>
         <Toast.Header>
           <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
@@ -119,7 +126,7 @@ function Membership() {
         </Toast.Header>
         <Toast.Body>Kul att du ville bli en av oss! Nu skickar vi dig vidare till alla fina kläder</Toast.Body>
       </Toast>
-      </ToastContainer>
+      </ToastContainer> */}
     </Container>
 
    </>

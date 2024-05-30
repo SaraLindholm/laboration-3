@@ -23,7 +23,7 @@ function Home () {
           </p>
           <h5>Hur fungerar det?</h5>
           <p>
-            Det är enkelt! På Kläd-Biblioteket kan du låna kläder för olika tillfällen och behov. Bläddra bland vårt sortiment av badkläder, byxor, klänningar, tröjor och mycket mer. När du hittar något du gillar, klicka bara på "Reservera", fyll i dina uppgifter och hämta upp kläderna i vår lokal.
+            Det är enkelt! På Kläd-Biblioteket kan du låna kläder för olika tillfällen och behov. Bläddra bland vårt sortiment av badkläder, byxor, klänningar, tröjor och mycket mer. När du hittar något du gillar, klicka bara på "Reservera", fyll i dina uppgifter och hämta upp kläderna i vår lokal.</p><p>OBS. Nytt för 2024 är att vi nu tack vare vår ökade medlemsmängd erbjuder möjlighet att skicka kläder till ditt närmsta postombud.
           </p>
           <h5>Varför låna kläder?</h5>
           <p>
