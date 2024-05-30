@@ -50,15 +50,27 @@ app.get('/', async (_request, response) => {
 
 //POST-Anrop för att lägga till kläder i tabellen Clothes
 app.post('/upload', upload.single('image_url'), async (request, response) => {
-  console.log(request.file, request.body)
+  console.log('File:', request.file)
+  console.log('Body:', request.body)
 
   const { name, description, brand, size, color, condition_comment, category_id } = request.body;
 
   try {
     const query = `
       INSERT INTO clothes (name, description, brand, size, color, condition_comment, category_id, image_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
-       const { rows } = await client.query(query, [name, description, brand, size, color, condition_comment, category_id, request.file !== undefined ?request.file.filename: '']);
+      //  const { rows } = await client.query(query, [name, description, brand, size, color, condition_comment, category_id, request.file !== undefined ?request.file.filename: '']);
+      const values = [
+        name,
+        description,
+        brand,
+        size,
+        color,
+        condition_comment,
+        category_id,
+        request.file !== undefined ? request.file.filename : ''
+      ];
 
+      const { rows } = await client.query(query, values);
 
 
       console.log('Lägger till plagg i databasen');

@@ -51,17 +51,35 @@ function AddItemForm() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    console.log('Form data being sent:', formData);
+    const data = new FormData();
+
+    Object.keys(formData).forEach((key) => {
+      data.append(key, formData[key as keyof typeof formData]);
+    });
+
+
+  // Lägg till den valda filen till FormData-objektet
+  const fileInput = document.querySelector('input[name="image_url"]') as HTMLInputElement;
+  if (fileInput && fileInput.files) {
+    data.append('image_url', fileInput.files[0]);
+  }
+
+  console.log('Try to send Form-data:', formData);
 
     try {
       // Skicka formulärdata till servern
       const response = await fetch('http://localhost:3000/upload', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
+        body: data
       });
+
+      // const response = await fetch('http://localhost:3000/upload', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(formData)
+      // });
 
       console.log('Response status:', response.status);
 
@@ -141,8 +159,6 @@ function AddItemForm() {
               id={`category-${category.category_id}`}
               value={category.category_id}
               label={category.name} onChange={handleChange}
-              // value={formData.category_id}
-              //jag vet inte hur jag ska använda mig av formData här? Jag har ju angivet value för respektive kategori här?
             />
         </div>
           ))}
@@ -151,7 +167,11 @@ function AddItemForm() {
 
          <Form.Group className="mb-3" controlId="formImageUrl">
           <Form.Label column="lg">Ladda upp en bild: </Form.Label>
-          <Form.Control type="file" name="image_url" placeholder="Bild URL" />
+          <Form.Control
+          type="file"
+          accept= "image/*"
+          name="image_url"
+          placeholder="Bild URL" />
         </Form.Group>
 
         <Button variant="primary" type="submit">Ladda upp ditt plagg</Button>
