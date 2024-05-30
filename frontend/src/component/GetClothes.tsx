@@ -39,7 +39,7 @@ function GetClothes () {
     <div className="TableClothes-Div">
     {clothes.map((item, index) =>(
       <div className="TableClothes-Card" key={index}>
-    <Card style={{ width: '16rem', margin: '0 auto' }}>
+    <Card style={{ width: '100%', margin: '0 auto' }}>
     <Card.Img variant="top" src={`http://localhost:3000/uploads/${item.image_url ? item.image_url : 'noPhoto.jpg'}`}
      alt='Ingen bild att visa' />
     <Card.Body>
