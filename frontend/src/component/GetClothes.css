@@ -4,6 +4,7 @@
   /* border: solid 2px black; */
 }
 
+/* //Detta är den yttre diven. innanför Containern dock  */
 .TableClothes-Div {
   width: 100%; /* Bredden på Fetch-Div */
   margin: 0 auto; /* Centrerar Fetch-Div horisontellt */
@@ -14,21 +15,34 @@
 
 .TableClothes-Card {
   /* Stilar för varje aktivitetskort */
-  /* width: calc(25% - 5px); */
+  width: calc(20% - 5px);
   height: auto;
   /* Bredden på varje kort */
   margin-right: 10px;
   margin-bottom: 20px;
   /* mellanrum utanför kort */
-  padding: 15px; /* Utfyllnad mellan innehåll/ kort */
+  /*padding: 15px;  Utfyllnad mellan innehåll/ kort */
   -webkit-box-shadow: 0px 0px 70px 0px #7dbeb3;
   -moz-box-shadow: 0px 0px 70px 0px #7dbeb3;
   box-shadow: 0px 0px 70px 0px #7dbeb3;
   border-radius: 20px;
 }
 
+.TableClothes-Card * {
+  /* background-color: aqua; */
+  width: 100%;
+  border: none;
+}
+/* .list-group-flush {
+  background-color: blue;
+} */
+
+/* .list-group-flush .list-group-item {
+  border: none; Ta bort kantlinjer
+} */
 .card-img-top {
-  max-height: 250px;
+  max-height: 220px;
+  width: auto;
 }
 
 .TableImg-Container {
