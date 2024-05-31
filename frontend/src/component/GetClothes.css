@@ -32,8 +32,10 @@
 }
 
 .card-img-top {
-  max-height: 220px;
-  width: auto;
+  margin-top: 5%;
+  margin-left: 20%;
+  max-height: 210px;
+  max-width: 190px;
 }
 
 .TableImg-Container {

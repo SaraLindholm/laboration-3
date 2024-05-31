@@ -1,3 +1,23 @@
+
+--Users
+
+CREATE TABLE public.users(
+user_id SERIAL PRIMARY KEY,
+surname TEXT NOT NULL,
+email TEXT UNIQUE NOT NULL,
+password TEXT NOT NULL,
+created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+number INTEGER
+lastname TEXT NOT NULL,
+CHECK (LENGTH(password) >=6),
+CHECK (LENGTH(surname) >=2 )
+);
+
+INSERT INTO public.users (user_id, surname, email, password, created, number, lastname) VALUES (10, 'Andreas', 'andreas@hotmail.com', 'testtest', '2024-05-21 21:33:38.920085', NULL, NULL);
+INSERT INTO public.users (user_id, surname, email, password, created, number, lastname) VALUES (40, 'Sara', 'sara.lindholm@iths.se', '123456', '2024-05-28 10:39:30.679945', NULL, 'Lindholm');
+INSERT INTO public.users (user_id, surname, email, password, created, number, lastname) VALUES (41, 'Siri', 'siri@gmail.com', 'Redskins44', '2024-05-30 09:37:40.968036', NULL, 'Hagström');
+INSERT INTO public.users (user_id, surname, email, password, created, number, lastname) VALUES (42, 'Maria', 'maria@gmail.com', '123456', '2024-05-31 09:17:05.486782', NULL, 'Danstål');
+
 CREATE TABLE clothes(clothes_id SERIAL PRIMARY KEY,
 name TEXT NOT NULL,
 description TEXT NOT NULL,
@@ -7,7 +27,7 @@ color TEXT NOT NULL,
 condition_comment TEXT,
 category_id INTEGER,
 uploaded TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-FOREIGN KEY (category_id) REFERENCES categories (category_id)
+FOREIGN KEY (category_id) REFERENCES public.categories (category_id)
 );
 
 CREATE TABLE categories (
@@ -33,21 +53,9 @@ INSERT INTO clothes (name, description, brand, size, color, condition_comment, c
 VALUES
 ('Snygg bikini', 'Galet fin bikini!!', 'zummertime', 'L', 'Rosa', 'Liten fläck vid spännet i ryggen', (SELECT category_id FROM categories WHERE name = 'Badkläder'));
 
-CREATE TABLE users(
-user_id SERIAL PRIMARY KEY,
-name TEXT NOT NULL,
-email TEXT UNIQUE NOT NULL,
-password TEXT NOT NULL,
-created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-CHECK (LENGTH(password) >=6),
-CHECK (LENGTH(name) >=2 )
-);
 
 
-    ('Alma', 'almaa@gmail.com', 'password1'),
-    ('Berit', 'beritb@gmail.com', 'password2'),
-    ('Calle', 'calle@gmail.com', 'password3'),
-    ('Dugge', 'dugge@gmail.com', 'password4');
+--blev aldrig att jag kom så långt att jag kunde använda denna tabell
 
 CREATE TABLE loan(
 loan_id SERIAL PRIMARY KEY,
