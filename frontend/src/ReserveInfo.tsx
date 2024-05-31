@@ -4,8 +4,7 @@ function Reserve(){
 
 
   return (
-  <ReserveInformation />
-  )
-}
+    <ReserveInformation />
+  )}
 
 export default Reserve

@@ -4,10 +4,9 @@ function RentClothes(){
 
 
   return (
-    <>
-    <GetClothes />
-    </>
-  )
-}
+
+      <GetClothes />
+
+  )}
 
 export default RentClothes

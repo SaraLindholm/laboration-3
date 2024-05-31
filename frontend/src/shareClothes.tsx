@@ -5,11 +5,9 @@ function shareClothes(){
 
 
   return (
-    <>
-  <AddItemForm />
 
-  </>
-  )
-}
+    <AddItemForm />
+
+  )}
 
 export default shareClothes

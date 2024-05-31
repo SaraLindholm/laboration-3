@@ -4,7 +4,7 @@ function Faq (){
 
 return (
   <Container className="mt-5">
-<Accordion>
+    <Accordion>
       <Accordion.Item eventKey="0">
         <Accordion.Header>Vad är Klädbiblioteket?</Accordion.Header>
         <Accordion.Body>
@@ -42,9 +42,7 @@ return (
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
-    </Container>
-)
-
-}
+  </Container>
+)}
 
 export default Faq
