@@ -10,7 +10,7 @@ import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 
 function AddItemForm() {
-
+    //typar categori_id som number och dess namn-nyckel som en string
   const categories: {category_id: number; name: string; } [] = [
     {category_id: 1, name: 'Tröjor' },
     {category_id: 2, name: 'Byxor'},
@@ -23,7 +23,7 @@ function AddItemForm() {
     {category_id: 9, name: 'T-shirts'},
     {category_id: 10, name: 'Övrigt'}
   ]
-
+    //formData initiala värden
   const [formData, setFormData] = useState ( {
     name: '',
     description: '',
@@ -36,29 +36,30 @@ function AddItemForm() {
 
   })
 
-      // //ett försök till en Toast som informerar om medlemskap
+      // Toast som informerar om medlemskap
       const [showA, setShowA] = useState(false);
       const toggleShowA = () => setShowA(!showA);
 
+    //navigations-hooken
   const navigate = useNavigate ()
-
 
   const navigateToNewPage = () => {
     console.log('Navigerar till ny sida vid klick')
     navigate ('/rentClothes') }
 
-
+//the mainEvent of the show..
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    //ny Formdata...
     const data = new FormData();
-
+    //.skapar en array och går igenom formDatas alla nycklar och lägger till det nya värdet med hjälp av append
     Object.keys(formData).forEach((key) => {
       data.append(key, formData[key as keyof typeof formData]);
     });
 
 
-  // Lägg till den valda filen till FormData-objektet
+  // Lägg till den valda filen till FormData-objektet, letar efter ett element med name='image_url' Om detta  element finns och om filen finns ska det nya värdet, dvs bilden läggas till. append.
   const fileInput = document.querySelector('input[name="image_url"]') as HTMLInputElement;
   if (fileInput && fileInput.files) {
     data.append('image_url', fileInput.files[0]);
@@ -73,18 +74,10 @@ function AddItemForm() {
         body: data
       });
 
-      // const response = await fetch('http://localhost:3000/upload', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify(formData)
-      // });
-
       console.log('Response status:', response.status);
 
       if (response.ok) {
-        // Toast
+        // Toasten
         setShowA(true)
         console.log('Formuläret skickades framgångsrikt!');
         setTimeout(() => {
@@ -98,7 +91,7 @@ function AddItemForm() {
       console.error('Ett fel uppstod:', error);
     }
   };
-
+//lyssnar på förändringar i formuläret
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData({
@@ -108,7 +101,7 @@ function AddItemForm() {
   };
   return (
   <>
-    <Container className="p-3">  {/* Container med padding */}
+    <Container className="p-3">
 
       <h1 className="mb-4">Ladda upp kläder till vårt gemensamma bibliotek</h1>
       <Form onSubmit={handleSubmit}
@@ -118,7 +111,6 @@ function AddItemForm() {
           <Form.Label column="lg">Titel: </Form.Label>
           <Form.Control type="text" name="name" placeholder="T.ex 'Snygg vårblus'" value={formData.name} onChange={handleChange}/>
         </Form.Group>
-
 
         <Form.Group  as={Col} className="mb-3" controlId="formDescription">
           <Form.Label column="lg">Bekriv din vara: </Form.Label>
@@ -192,7 +184,6 @@ function AddItemForm() {
     </>
   );
 }
-
 
 
 export default AddItemForm;

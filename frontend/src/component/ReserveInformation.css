@@ -1,10 +1,10 @@
 .flexContainer {
   display: flex;
-  flex-direction: column; /*för barn */
+  flex-direction: column; /*för barn-elementen */
   width: 100%;
   align-items: center; /* Centrerar rubriken horisontellt */
 
-  padding: 20px 20px; /* Lägg till sidomarginer för att undvika att texten hamnar för nära kanten */
+  padding: 20px 20px; /* Lägg till sidomarginer så att texten inte hamnar för nära kanten */
 }
 
 .flexRow {
@@ -20,13 +20,4 @@
   flex-direction: column;
   padding: 5px;
   width: 45%;
-  /* background-color: aquamarine; */
 }
-
-/* .itemContainer {
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  padding: 5px;
-  background-color: bisque;
-} */
